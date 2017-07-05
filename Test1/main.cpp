@@ -22,7 +22,7 @@ class Player : public Creature {
 
 
 int main() {
-	Player *wsk = new Player;
+	Creature *wsk = new Player;
 	delete wsk;
 	return 0;
 }
