@@ -1,28 +1,21 @@
-#include <iostream>
-#include <string>
-
-class Creature {
-	protected:
-		std::string _name;
-		std::string _class;
-		std::string _weapon;
-		int _hp;
-		int _damage;
-		int _armor;
-	public:
-		Creature() { std::cout << "CREATURE CONSTR\n"; }
-		virtual ~Creature() = 0 { std::cout << "CREATURE DESTR\n"; }
-};
-
-class Player : public Creature {
-	public:
-		Player() { std::cout << "PLAYER CONSTR\n"; }
-		~Player() { std::cout << "PLAYER DETR\n"; }
-};
+#include "Creature.h"
 
 
 int main() {
-	Creature *wsk = new Player;
-	delete wsk;
+	Creature *wsk;
+	wsk = new Player("Kalach", "warrior",0,4,4,3);
+	if (wsk->die()) {
+		std::cout << "Mob umarl.\n";
+		delete wsk;
+	} else wsk->showData();
+	Creature *wsk2;
+	wsk2 = new Player("Kawka", "mag", 0, 43, 42,100);
+	if (wsk->die()) {
+		std::cout << "Mob umarl.\n";
+		delete wsk2;
+	} else wsk->showData();
+	//std::cout << typeid(wsk).name();
+	
+	
 	return 0;
 }
