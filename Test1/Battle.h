@@ -9,4 +9,5 @@ class Battle {
 		Battle(Creature*, Creature*);
 		~Battle();
 		void fight();
+		void stats();
 };

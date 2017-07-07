@@ -5,19 +5,17 @@
 int main() {
 	srand(time(NULL));
 	Creature *p;
-	p = new Player("Kalach", "warrior",100,4,4,25,0);
+	p = new Player("Kalach", "Warrior",100,4,4,25,0);
 	p->showData();
 	Creature *m;
-	m = new Player("Kawka", "mag", 80, 43, 42,19, 4);
+	m = new Player("Kawka", "normal", 80, 43, 42,19, 4);
 	m->showData();
 	Battle b(p, m);
-	while ((!p->die()) && (!m->die())) {
-		b.fight();
-	}
-		
-
+	b.fight();
+	p->addExp(10);
+	p->showData();
 	//std::cout << typeid(wsk).name();
-	//delete wsk;
+	delete p;delete m;
 
 	return 0;
 }

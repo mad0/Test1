@@ -10,7 +10,7 @@ Creature::~Creature(){
 }
 
 void Creature::showData() {
-	std::cout << "Name: " << _name;
+	std::cout << "Name: " << _name << "\n";
 	std::cout << "Level: " << _level << "\n";
 	std::cout << "Damage: " << _damage << "\n";
 	std::cout << "Class: " << _class << "\n";
@@ -31,12 +31,19 @@ void Creature::setHp(int damage) {
 
 int Creature::attack(Creature* target) {
 	int dmg = 0;
+	int hp = target->getHp();
 	//7 (-3,-2,-1,0,1,2,3) liczb -3 do 3
 	float rnd = (rand() % 7) - 3;
-	//std::cout << rnd << " random\n";
+	//std::cout << _hp << " random\n";
 	dmg = _damage + (rnd);
-	target->setHp(dmg);
-	return dmg;
+	if (dmg >hp) {
+		target->setHp(hp);
+		return dmg;
+	}
+	else {
+		target->setHp(dmg);
+		return dmg;
+	}
 }
 
 //PLAYER
@@ -48,6 +55,11 @@ Player::Player(std::string name, std::string classa, int hp, int armor, int leve
 void Player::showData() {
 	Creature::showData();
 	std::cout << "Bagsize: " << _bagSize << "\n";
+	std::cout << "Exp: " << _exp << "\n";
+}
+
+void Player::addExp(int exp) {
+	_exp += exp;
 }
 
 
