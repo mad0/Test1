@@ -1,6 +1,7 @@
 #include <ctime>
 #include "Creature.h"
 #include "Battle.h"
+#include <conio.h>
 
 int main() {
 	srand(time(NULL));
@@ -10,6 +11,7 @@ int main() {
 	Creature *m;
 	m = new Player("Kawka", "normal", 80, 43, 42,19, 4);
 	m->showData();
+	_getch();
 	Battle b(p, m);
 	b.fight();
 	p->addExp(10);
