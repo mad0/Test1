@@ -1,21 +1,23 @@
+#include <ctime>
 #include "Creature.h"
-
+#include "Battle.h"
 
 int main() {
-	Creature *wsk;
-	wsk = new Player("Kalach", "warrior",0,4,4,3);
-	if (wsk->die()) {
-		std::cout << "Mob umarl.\n";
-		delete wsk;
-	} else wsk->showData();
-	Creature *wsk2;
-	wsk2 = new Player("Kawka", "mag", 0, 43, 42,100);
-	if (wsk->die()) {
-		std::cout << "Mob umarl.\n";
-		delete wsk2;
-	} else wsk->showData();
+	srand(time(NULL));
+	Creature *p;
+	p = new Player("Kalach", "warrior",100,4,4,25,0);
+	p->showData();
+	Creature *m;
+	m = new Player("Kawka", "mag", 80, 43, 42,19, 4);
+	m->showData();
+	Battle b(p, m);
+	while ((!p->die()) && (!m->die())) {
+		b.fight();
+	}
+		
+
 	//std::cout << typeid(wsk).name();
-	
-	
+	//delete wsk;
+
 	return 0;
 }
